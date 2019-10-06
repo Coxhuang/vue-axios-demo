@@ -1,8 +1,9 @@
 <template>
 	<div>
-		<div @click="btnClick()">点击</div>
-		<div @click="btnClick2()">POST点击</div>
-		<div @click="btnClick3()">api点击</div>
+<!--		<div @click="btnClick()">点击</div>-->
+<!--		<div @click="btnClick2()">POST点击</div>-->
+		<div @click="btnClick3()">GET点击</div>
+		<div @click="btnClick4()">POST点击</div>
 	</div>
 </template>
 
@@ -34,7 +35,16 @@ export default {
             // })
         },
         btnClick3:function(){
-            this.$api.api_all.get_user_list().then((response)=>{
+            this.$api.api_all.get_test_list().then((response)=>{
+                console.log(response.data)
+            }).catch((error)=>{
+                console.log(error.response.status)
+            })
+        },
+        btnClick4:function(){
+            this.$api.api_all.create_test(
+				"小肥柴"
+            ).then((response)=>{
                 console.log(response.data)
             }).catch((error)=>{
                 console.log(error.response.status)
